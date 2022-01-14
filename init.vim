@@ -22,6 +22,7 @@ set iskeyword+=-
 set splitbelow
 set splitright
 set hlsearch
+set noerrorbells
 set path+=**
 set t_Co=256                            " Support 256 colors
 set background=dark
