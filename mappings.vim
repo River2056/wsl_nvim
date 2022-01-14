@@ -7,6 +7,7 @@ noremap <leader>jp :JsonPath<cr>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>ss :w<cr>
 nnoremap <leader>q :q<cr>
+vnoremap <leader>p "_dP
 
 " tabs
 nnoremap <leader>dt :diffthis<cr>
