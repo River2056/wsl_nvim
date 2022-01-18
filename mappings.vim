@@ -61,8 +61,15 @@ noremap <leader>r :call CompileRun()<cr>
 func! CompileRun()
     exec "w"
     if &filetype == 'java'
-        exec "!javac %"
-        exec "!time java %:r"
+        let l:path = expand('%')
+        echo l:path
+        exec '!javac -d bin ' . l:path
+        echo 'compile success: ' . l:path
+        let l:path = substitute(l:path, "\\", ".", "g")
+        let l:path = substitute(l:path, ".java", "", "")
+        let l:path = substitute(l:path, "src.", "", "")
+        echo l:path
+        exec '!java -cp ./bin ' . l:path
     elseif &filetype == 'python'
         exec "!time python %"
     elseif &filetype == 'lua'
