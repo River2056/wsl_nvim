@@ -26,7 +26,8 @@ set noerrorbells
 set scrolloff=10
 set hidden
 set path+=**
-set t_Co=256                            " Support 256 colors
+" set t_Co=256                            " Support 256 colors
+set termguicolors
 set background=dark
 
 call plug#begin('~/.local/share/nvim/site/autoload')
