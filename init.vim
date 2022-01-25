@@ -60,11 +60,11 @@ colorscheme gruvbox
 syntax enable
 
 " source settings files
-source ~/.config/nvim/mappings.vim
-source ~/.config/nvim/coc.vim
-source ~/.config/nvim/nerdtree.vim
-source ~/.config/nvim/telescope.vim
-source ~/.config/nvim/airline.vim
+source ~/.config/nvim/init/mappings.vim
+source ~/.config/nvim/init/coc.vim
+source ~/.config/nvim/init/nerdtree.vim
+source ~/.config/nvim/init/telescope.vim
+source ~/.config/nvim/init/airline.vim
 
 " lua init settings
 :lua require('kevin')

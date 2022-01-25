@@ -20,6 +20,8 @@ nnoremap <leader>nb :enew<cr>
 nnoremap <leader>bn :bnext<cr>
 nnoremap <leader>bp :bprevious<cr>
 nnoremap <leader>bd :bdelete<cr>
+nnoremap <leader>bda :%bd<bar>e#<cr>
+nnoremap <leader>ls :ls<cr>
 
 nnoremap <leader>ev :Hex! ~/.config/nvim/<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
