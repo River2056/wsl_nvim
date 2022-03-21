@@ -1,3 +1,4 @@
+" custom mappings
 inoremap jk <esc>
 inoremap kj <esc>
 let mapleader = ","
@@ -6,8 +7,14 @@ noremap <leader>pp ggVG"+p
 noremap <leader>jp :JsonPath<cr>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>ss :w<cr>
+nnoremap <leader>sa :wa<cr>
 nnoremap <leader>q :q<cr>
 vnoremap <leader>p "_dP
+nnoremap <leader>o :Ex<cr>
+nnoremap <leader>ev :Hex! ~/.config/nvim/<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>pc :PlugClean<cr>
 
 " tabs
 nnoremap <leader>dt :diffthis<cr>
@@ -23,10 +30,7 @@ nnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>bda :%bd<bar>e#<cr>
 nnoremap <leader>ls :ls<cr>
 
-nnoremap <leader>ev :Hex! ~/.config/nvim/<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>pi :PlugInstall<cr>
-nnoremap <leader>pc :PlugClean<cr>
+" fzf
 nnoremap <leader>fl :Lines 
 nnoremap <leader>fb :BLines 
 nnoremap <leader>ff :Files<cr>
@@ -83,3 +87,4 @@ endfunc
 noremap <leader>gr :!gradle run<cr>
 inoremap <leader>ss System.out.println();<esc>hi
 noremap <leader>ll :love .
+vnoremap <leader>rc :w !bash<cr>

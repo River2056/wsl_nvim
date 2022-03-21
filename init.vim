@@ -1,8 +1,9 @@
+" sets
 set nocompatible
 set backspace=2
 set encoding=utf-8
 set fileencoding=utf-8
-filetype off
+filetype plugin indent on
 
 let $LANG='en'
 set langmenu=none
@@ -30,15 +31,18 @@ set path+=**
 set termguicolors
 set background=dark
 
+" plugins
 call plug#begin('~/.local/share/nvim/site/autoload')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'alvan/vim-closetag'
 Plug 'mogelbrod/vim-jsonpath'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'lunarvim/darkplus.nvim'
@@ -72,6 +76,7 @@ source ~/.config/nvim/init/airline.vim
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
+" clipboard
 set clipboard+=unnamedplus
 let g:clipboard = {
           \   'name': 'win32yank-wsl',
@@ -117,3 +122,9 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent! loadview
+augroup end
