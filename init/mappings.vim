@@ -15,6 +15,7 @@ nnoremap <leader>ev :Hex! ~/.config/nvim/<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pc :PlugClean<cr>
+nnoremap <space> za
 
 " tabs
 nnoremap <leader>dt :diffthis<cr>
@@ -77,7 +78,7 @@ func! CompileRun()
         echo l:path
         exec '!java -cp ./bin ' . l:path
     elseif &filetype == 'python'
-        exec "!time python %"
+        exec "!time python3 %"
     elseif &filetype == 'lua'
         exec "!time lua %"
     elseif &filetype == 'javascript'
@@ -85,6 +86,15 @@ func! CompileRun()
     endif
 endfunc
 noremap <leader>gr :!gradle run<cr>
-inoremap <leader>ss System.out.println();<esc>hi
 noremap <leader>ll :love .
-vnoremap <leader>rc :w !bash<cr>
+vnoremap <leader>rb :!bash<cr>
+
+" language specific abbreviations
+autocmd FileType java iabbrev sout System.out.println()
+autocmd FileType java iabbrev pcls public class <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
+autocmd FileType java iabbrev pint public interface <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
+autocmd FileType java iabbrev psvm public static void main(String[] args) {<cr>}<esc>O
+autocmd FileType typescript iabbrev ecls export class <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
+autocmd FileType typescript iabbrev eint export interface <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
+autocmd FileType python iabbrev defmain def main():<esc>opass<esc>o<cr>if __name__ == '__main__':<esc>omain()
+autocmd FileType python iabbrev deftest import unittest<esc>o<cr><esc>"%p$vbbdbbv^d,ccIclass Test<esc>l~<esc>A(unittest.TestCase):<cr>def test_(self):<cr>pass<cr><cr><esc>0aif __name__ == '__main__':<cr>unittest.main()
