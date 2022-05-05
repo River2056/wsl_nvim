@@ -61,6 +61,11 @@ nnoremap <C-l> <C-w>l
 vnoremap > >gv
 vnoremap < <gv
 
+" Git fugitive
+nmap <leader>gs :Git<cr>
+nmap <leader>gf :diffget //2<cr>
+nmap <leader>gj :diffget //3<cr>
+
 " language specific
 " nmap <F5> :call CompileRun()<cr>
 " noremap <leader>r :!javac % && java %:r<cr>
@@ -89,6 +94,29 @@ noremap <leader>gr :!gradle run<cr>
 noremap <leader>ll :love .
 vnoremap <leader>rb :!bash<cr>
 
+" ChangeCase
+function! ChangeCase()
+    let l:word = expand('<cword>')
+    if l:word =~? '_\w'
+        " has underscore, change to camel case
+        " might be all caps, tolower() first
+        let l:word = tolower(l:word)
+        let l:word = substitute(l:word, '_\(\w\)', '\U\1', 'g')
+        exec 'norm! ciw' . l:word
+    else
+        " no underscore, change to snake case
+        let l:word = substitute(l:word, '\(\u[A-Z]\)', '_\u\1', 'g')
+        let l:word = tolower(l:word)
+        exec 'norm! ciw' . l:word
+    endif
+endfunction
+nnoremap <leader>cc :call ChangeCase()<cr>
+
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
+
 " language specific abbreviations
 autocmd FileType java iabbrev sout System.out.println()
 autocmd FileType java iabbrev pcls public class <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
@@ -97,4 +125,4 @@ autocmd FileType java iabbrev psvm public static void main(String[] args) {<cr>}
 autocmd FileType typescript iabbrev ecls export class <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
 autocmd FileType typescript iabbrev eint export interface <esc>"%pvbbdbbv^wwdA {<cr>}<esc>O
 autocmd FileType python iabbrev defmain def main():<esc>opass<esc>o<cr>if __name__ == '__main__':<esc>omain()
-autocmd FileType python iabbrev deftest import unittest<esc>o<cr><esc>"%p$vbbdbbv^d,ccIclass Test<esc>l~<esc>A(unittest.TestCase):<cr>def test_(self):<cr>pass<cr><cr><esc>0aif __name__ == '__main__':<cr>unittest.main()
+autocmd FileType python iabbrev deftest import unittest<esc>o<cr>O<esc>"%pvbbdbbv^dIdef <esc>A():<cr>pass<cr><cr><esc>"%p$vbbdbbv^d,ccIclass Test<esc>l~<esc>A(unittest.TestCase):<cr>def setUp(self):<cr>self.tests = []<cr><cr><esc>"%pvbbdbbv^dI	def test_<esc>A(self):<cr>for value, expected in self.tests:<cr>with self.subTest(value=value):<cr>result = <esc>"%pvbbdbbvT=di <esc>A(value)<cr>print(f'result: {result}, expected: {expected}, input: {value}')<cr>self.assertEqual(result, expected)<cr><cr><esc>0aif __name__ == '__main__':<cr>unittest.main()
