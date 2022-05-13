@@ -88,6 +88,8 @@ func! CompileRun()
         exec "!time lua %"
     elseif &filetype == 'javascript'
         exec "!time node %"
+    elseif &filetype == 'c'
+        exec "!time gcc % && ./%<"
     endif
 endfunc
 noremap <leader>gr :!gradle run<cr>
