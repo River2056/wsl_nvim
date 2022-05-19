@@ -90,6 +90,8 @@ func! CompileRun()
         exec "!time node %"
     elseif &filetype == 'c'
         exec "!time gcc % -o %< && ./%<"
+    elseif &filetype == 'ruby'
+        exec "!time ruby %"
     endif
 endfunc
 noremap <leader>gr :!gradle run<cr>
