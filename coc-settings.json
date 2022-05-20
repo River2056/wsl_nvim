@@ -8,5 +8,6 @@
     }
   },
   "java.home": "/usr/lib/jvm/java-1.11.0-openjdk-amd64",
-  "clangd.path": "~.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd"
+  "clangd.path": "~.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd",
+  "solargraph.formatting": true
 }

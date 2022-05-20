@@ -65,6 +65,7 @@ vnoremap < <gv
 nmap <leader>gs :Git<cr>
 nmap <leader>gf :diffget //2<cr>
 nmap <leader>gj :diffget //3<cr>
+nmap <leader>gc :Git commit<cr>
 
 " language specific
 " nmap <F5> :call CompileRun()<cr>
@@ -120,6 +121,11 @@ augroup black_on_save
   autocmd!
   autocmd BufWritePre *.py Black
 augroup end
+
+" augroup rufo_on_save
+"     autocmd!
+"     autocmd BufWritePre *.rb !rufo %
+" augroup end
 
 " language specific abbreviations
 autocmd FileType java iabbrev sout System.out.println()

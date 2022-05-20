@@ -53,6 +53,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'ruby-formatter/rufo-vim'
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'mfussenegger/nvim-jdtls'
 " Plug 'nvim-lua/completion-nvim'
@@ -76,6 +77,8 @@ source ~/.config/nvim/init/airline.vim
 
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+
+let g:rufo_auto_formatting = 1
 
 " clipboard
 set clipboard+=unnamedplus
